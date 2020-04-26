@@ -142,12 +142,3 @@ TWRP_INCLUDE_LOGCAT      := true
 
 ## ID
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-
-## Orange Fox
-FOX_RECOVERY_INSTALL_PARTITION     := "/dev/block/platform/bootdevice/by-name/recovery"
-
-## Extras
-ANDROID_BUILD_EMBEDDED             := true
-
-## Promo
-OF_MAINTAINER                      := ( lehmancurtis147 )
