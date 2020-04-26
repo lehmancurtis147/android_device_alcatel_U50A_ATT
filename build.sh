@@ -30,6 +30,6 @@ export LC_ALL="C"
 ## Lunch device
 #
 lunch omni_U50A_ATT-eng
-## Build TWRO
+## Build TWRP
 #
 make clean; mka recoveryimage
