@@ -1,69 +1,89 @@
-########################################################################
-#                                                                      #
-#                     recovery.fstab For Tetra                         #
-#                        by:lehmancurtis147                            #
-#                                                                      #
-########################################################################
-#                                                                      #
-# Copyright (C) April 18, 2020 Curtis Lehman                           #
-#                                                                      #
-# This program is free software; you can redistribute it and/or modify #
-# it under the terms of the GNU General Public License version 2 as    #
-# published by the Free Software Foundation.                           #
-#                                                                      #
-# This program is distributed in the hope that it will be useful,      #
-# but WITHOUT ANY WARRANTY; without even the implied warranty of       #
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                 #
-# See http://www.gnu.org/licenses/gpl-2.0.html for more details        #
-########################################################################
+# ##################################################################################################################################################################
+#
+#                                                                    recovery.fstab For Tetra
+#
+#                                                                       by:lehmancurtis147
+#
+# __________________________________________________________________________________________________________________________________________________________________
+#
+# Copyright (C) May 1, 2020 Curtis Lehman
+#
+#
+# This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free 
+# Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE.
+#
+#
+# See http://www.gnu.org/licenses/gpl-2.0.html for more details
+#
+#
+# ##################################################################################################################################################################
 
-/boot_para	    emmc	/dev/block/platform/bootdevice/by-name/boot_para	flags=display="Boot_Para"
-/recovery	    emmc	/dev/block/platform/bootdevice/by-name/recovery		flags=display="Recovery";backup=1;flashimg=1
-/misc		    emmc	/dev/block/platform/bootdevice/by-name/para		    flags=display="Misc"
-/misc2          emmc    /dev/block/platform/bootdevice/by-name/misc2
-/expdb		    emmc	/dev/block/platform/bootdevice/by-name/expdb
 
-/persistent	    emmc	/dev/block/platform/bootdevice/by-name/frp		    flags=display="Frp"
-/nvram		    emmc	/dev/block/platform/bootdevice/by-name/nvram		flags=display="NVRAM/IMEI";backup=0;flashimg=0
-/metadata	    emmc	/dev/block/platform/bootdevice/by-name/metadata
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#
+#                                                                     INTERNAL/MOUNTED DEVICES
+# __________________________________________________________________________________________________________________________________________________________________
+#
+# MOUNT_POINT   FSTYPE              DEVICE                      DEVICE2                      FLAGS
+# __________________________________________________________________________________________________________________________________________________________________
 
-#/nvcfg		    ext4	/dev/block/platform/bootdevice/by-name/nvcfg		flags=display="Nvcfg"
-#/nvdata		ext4	/dev/block/platform/bootdevice/by-name/nvdata		flags=display="NvData";backup=0
-#/protect_f     ext4    /dev/block/platform/bootdevice/by-name/protect1     flags=display="Protect_f";backup=0
-#/protect_s	    ext4	/dev/block/platform/bootdevice/by-name/protect2		flags=display="Protect_s";backup=0
+/cache            ext4     /dev/block/platform/bootdevice/by-name/cache           flags=display="Cache"
+/tee1             emmc     /dev/block/platform/bootdevice/by-name/tee1            flags=backup=0;flashimg=0
+/tee2             emmc     /dev/block/platform/bootdevice/by-name/tee2            flags=backup=0;flashimg=0
+/bootloader       emmc     /dev/block/platform/bootdevice/by-name/lk              flags=display="LK";backup=1
+/bootloader2      emmc     /dev/block/platform/bootdevice/by-name/lk2             flags=display="LK2"backup=1
+/system           ext4     /dev/block/platform/bootdevice/by-name/system          flags=display="System";backup=1;flashimg=1
+/vendor           ext4     /dev/block/platform/bootdevice/by-name/vendor          flags=display="Vendor";backup=1;flashimg=1
+/logo             emmc     /dev/block/platform/bootdevice/by-name/logo            flags=display="Logo";flashimg=0
+/proinfo          emmc     /dev/block/platform/bootdevice/by-name/proinfo         flags=display="Proinfo";backup=0
+/system_image     emmc     /dev/block/platform/bootdevice/by-name/system          flags=display="System_Image";backup=1;flashimg=1
+/vendor_image     emmc     /dev/block/platform/bootdevice/by-name/vendor          flags=display="Vendor_Image";backup=1;flashimg=1
+/boot             emmc     /dev/block/platform/bootdevice/by-name/boot            flags=display="Boot";backup=1;flashimg=1
+/.boot            emmc     /dev/block/mmcblk0p32                                  flags=display=".boot";backup=0;flashimg=0
+/recovery         emmc     /dev/block/platform/bootdevice/by-name/recovery        flags=display="Recovery";backup=1;flashimg=1
+/nvram            emmc     /dev/block/platform/bootdevice/by-name/nvram           flags=display="NVRAM/IMEI";backup=0;flashimg=0
+/data             f2fs     /dev/block/platform/bootdevice/by-name/userdata        flags=display="Data";encryptable="/dev/block/platform/bootdevice/by-name/metadata"
+#/protect_f       ext4     /dev/block/platform/bootdevice/by-name/protect1        flags=formattable;subpartitionof=/vendor;backup=0;flashimg=img
+#/protect_s       ext4     /dev/block/platform/bootdevice/by-name/protect2        flags=formattable;subpartitionof=/vendor;backup=0;flashimg=img
+#/nvdata          ext4     /dev/block/platform/bootdevice/by-name/nvdata          flags=formattable;subpartitionof=/vendor;backup=0;flashimg=img
+#/nvcfg           ext4     /dev/block/platform/bootdevice/by-name/nvcfg           flags=formattable;subpartitionof=/vendor;backup=0;flashimg=img
 
-/seccfg		    emmc	/dev/block/platform/bootdevice/by-name/seccfg
-/sec1		    emmc	/dev/block/platform/bootdevice/by-name/sec1
-/proinfo	    emmc	/dev/block/platform/bootdevice/by-name/proinfo		flags=display="Proinfo";backup=0
-/md1img		    emmc	/dev/block/platform/bootdevice/by-name/md1img		flags=display="Md1img";flashimg=0
-/md1dsp		    emmc	/dev/block/platform/bootdevice/by-name/md1dsp		flags=display="Md1dsp";flashimg=0
-/md1arm7        emmc    /dev/block/platform/bootdevice/by-name/md1arm7
+# ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-/logo		    emmc	/dev/block/platform/bootdevice/by-name/logo		    flags=display="Logo";flashimg=0
-/odmdtbo	    emmc	/dev/block/platform/bootdevice/by-name/odmdtbo
-/spmfw		    emmc	/dev/block/platform/bootdevice/by-name/spmfw
-/mcupmfw	    emmc	/dev/block/platform/bootdevice/by-name/mcupmfw
+/gz1              emmc     /dev/block/platform/bootdevice/by-name/gz1
+/gz2              emmc     /dev/block/platform/bootdevice/by-name/gz2
+/otp              emmc     /dev/block/platform/bootdevice/by-name/otp
+/frp     	      emmc     /dev/block/platform/bootdevice/by-name/frp
+/misc             emmc     /dev/block/platform/bootdevice/by-name/para
+/fota             emmc     /dev/block/platform/bootdevice/by-name/fota
+/sec1             emmc     /dev/block/platform/bootdevice/by-name/sec1
+/spmfw            emmc     /dev/block/platform/bootdevice/by-name/spmfw
+/expdb            emmc     /dev/block/platform/bootdevice/by-name/expdb
+/efuse            emmc     /dev/block/platform/bootdevice/by-name/efuse
+/seccfg           emmc     /dev/block/platform/bootdevice/by-name/seccfg
+/md1img           emmc     /dev/block/platform/bootdevice/by-name/md1img
+/md1dsp           emmc     /dev/block/platform/bootdevice/by-name/md1dsp
+/md3img           emmc     /dev/block/platform/bootdevice/by-name/md3img
+/md1arm7          emmc     /dev/block/platform/bootdevice/by-name/md1arm7
+/mcupmfw          emmc     /dev/block/platform/bootdevice/by-name/mcupmfw
+/odmdtbo          emmc     /dev/block/platform/bootdevice/by-name/odmdtbo
+/metadata         emmc     /dev/block/platform/bootdevice/by-name/metadata
+/flashinfo        emmc     /dev/block/platform/bootdevice/by-name/flashinfo
+/boot_para        emmc     /dev/block/platform/bootdevice/by-name/boot_para
+/loader_ext1      emmc     /dev/block/platform/bootdevice/by-name/loader_ext1
+/loader_ext2      emmc     /dev/block/platform/bootdevice/by-name/loader_ext2
+/mobile_info      ext4     /dev/block/platform/bootdevice/by-name/mobile_info
 
-/gz1		    emmc	/dev/block/platform/bootdevice/by-name/gz1
-/gz2		    emmc	/dev/block/platform/bootdevice/by-name/gz2
-/bootloader     emmc	/dev/block/platform/bootdevice/by-name/lk		    flags=display="LK";backup=0;flashimg=1
-/bootloader2    emmc	/dev/block/platform/bootdevice/by-name/lk2		    flags=display="LK2"backup=0;flashimg=0
-/loader_ext1	emmc	/dev/block/platform/bootdevice/by-name/loader_ext1
-/loader_ext2	emmc	/dev/block/platform/bootdevice/by-name/loader_ext2
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#
+#                                                                  EXTERNAL/REMOVABLE DEVICES
+# __________________________________________________________________________________________________________________________________________________________________
+#
+# MOUNT_POINT   FSTYPE              DEVICE                      DEVICE2                      FLAGS
+# __________________________________________________________________________________________________________________________________________________________________
 
-/boot		    emmc	/dev/block/platform/bootdevice/by-name/boot		    flags=display="Boot";backup=1;flashimg=1
-/boot_a         emmc    /dev/block/platform/bootdevice/by-name/boot_a
-/boot_b         emmc    /dev/block/platform/bootdevice/by-name/boot_b
-
-/tee1		    emmc	/dev/block/platform/bootdevice/by-name/tee1		    flags=display="Tee1";backup=0;flashimg=0
-/tee2		    emmc	/dev/block/platform/bootdevice/by-name/tee2		    flags=display="Tee2";backup=0;flashimg=0
-/cache		    ext4	/dev/block/platform/bootdevice/by-name/cache
-/data		    f2fs	/dev/block/platform/bootdevice/by-name/userdata		flags=display="Data";encryptable="/dev/block/platform/bootdevice/by-name/metadata"
-
-/vendor		    ext4	/dev/block/platform/bootdevice/by-name/vendor		flags=display="Vendor";backup=1
-/vendor_image	emmc	/dev/block/platform/bootdevice/by-name/vendor		flags=display="Vendor_Image";backup=1
-/system		    ext4	/dev/block/platform/bootdevice/by-name/system		flags=display="System";backup=1
-/system_image	emmc	/dev/block/platform/bootdevice/by-name/system		flags=display="System_Image";backup=1
-
-/external_sd	vfat	/dev/block/mmcblk1p1	/dev/block/mmcblk1	        flags=display="Micro SDcard";storage;wipeingui;removable;backup=0;voldmanaged=sdcard0:auto
-/usbotg		    auto    /dev/block/sda1		    /dev/block/sda		        flags=display="Pendrive/USB-OTG";storage;removable;backup=0;voldmanaged=usbotg:auto
+/external_sd      vfat     /dev/block/mmcblk1p1       /dev/block/mmcblk1          flags=display="external_sd";voldmanaged=sdcard0:auto;storage;wipeingui;removable
+/usbotg           vfat     /dev/block/sda1		      /dev/block/sda              flags=display="USB_OTG";storage;removable;backup=0
