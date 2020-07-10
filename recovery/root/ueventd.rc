@@ -33,6 +33,10 @@ subsystem sound
     devname uevent_devpath
     dirname /dev/snd
 
+subsystem mtp
+    devname uevent_devpath
+    dirname /dev/mtp
+    
 # ueventd can only set permissions on device nodes and their associated
 # sysfs attributes, not on arbitrary paths.
 #

@@ -5,24 +5,24 @@
 # 1 "<command-line>" 2
 # 1 "vendor/mediatek/proprietary/hardware/fstab/mt6739/fstab.in"
 # 107 "vendor/mediatek/proprietary/hardware/fstab/mt6739/fstab.in"
-/dev/block/platform/bootdevice/by-name/system /system ext4 wait,check
+/dev/block/platform/bootdevice/by-name/system /system ext4 rw wait,recoveryonly
 
-/dev/block/platform/bootdevice/by-name/vendor /vendor ext4 wait,check
-
-
+/dev/block/platform/bootdevice/by-name/vendor /vendor ext4 rw wait,recoveryonly
 
 
 
-/dev/block/platform/bootdevice/by-name/userdata /data f2fs noatime,nodev,discard,noflush_merge wait,check,quota,formattable,resize,encryptable=/dev/block/platform/bootdevice/by-name/metadata,
 
 
-/dev/block/platform/bootdevice/by-name/cache /cache ext4 noatime,nodev,noauto_da_alloc,discard wait,check
+/dev/block/platform/bootdevice/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,noflush_merge wait,check,quota,formattable,resize,encryptable=/dev/block/platform/bootdevice/by-name/metadata,
 
 
-/dev/block/platform/bootdevice/by-name/protect1 /vendor/protect_f ext4 noatime,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/dev/block/platform/bootdevice/by-name/protect2 /vendor/protect_s ext4 noatime,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/dev/block/platform/bootdevice/by-name/nvdata /vendor/nvdata ext4 noatime,nodev,noauto_da_alloc,discard wait,check,formattable
-/dev/block/platform/bootdevice/by-name/nvcfg /vendor/nvcfg ext4 noatime,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
+/dev/block/platform/bootdevice/by-name/cache /cache ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check
+
+
+/dev/block/platform/bootdevice/by-name/protect1 /vendor/protect_f ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
+/dev/block/platform/bootdevice/by-name/protect2 /vendor/protect_s ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
+/dev/block/platform/bootdevice/by-name/nvdata /vendor/nvdata ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check,formattable
+/dev/block/platform/bootdevice/by-name/nvcfg /vendor/nvcfg ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
 
 
 

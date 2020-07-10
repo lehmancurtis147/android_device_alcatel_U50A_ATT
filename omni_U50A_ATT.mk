@@ -24,15 +24,21 @@ DEVICE_PATH := device/alcatel/U50A_ATT
 # Release name
 PRODUCT_RELEASE_NAME := U50A_ATT
 
+#$(call inherit-product, vendor/omni/config/gsm.mk)
+
 # must be before including omni part
 $(call inherit-product, build/target/product/embedded.mk)
 
 TARGET_BOOTANIMATION_SIZE := 789x480
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+#$(call inherit-product, vendor/omni/config/common.mk)
 
-# Inherit from hardware-specific part of the product configuration
+# Inherit Telephony packages
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit language packages
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Discard inherited values and use our own instead.
 PRODUCT_BRAND        := TCL
@@ -42,6 +48,10 @@ PRODUCT_DEVICE       := U50A_ATT
 PRODUCT_NAME         := omni_U50A_ATT
 PRODUCT_LOCALES      := en_US,fr_CA,es_MX,zh_CN,zh_TW
 
+# file_contexts
+PRODUCT_COPY_FILES   += \
+    $(DEVICE_PATH)/recovery/root/file_contexts:/recovery/root/file_contexts
+        
 # INITS
 PRODUCT_COPY_FILES   += \
     $(DEVICE_PATH)/recovery/root/ueventd.rc:/recovery/root/ueventd.rc \
@@ -49,7 +59,7 @@ PRODUCT_COPY_FILES   += \
     $(DEVICE_PATH)/recovery/root/init.recovery.mt6739.rc:/recovery/root/init.recovery.mt6739.rc
 
 # Files for recovery/etc
-PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES    += \
     $(DEVICE_PATH)/recovery/root/etc/twrp.flags:/recovery/root/etc/twrp.flags \
     $(DEVICE_PATH)/recovery/root/etc/mke2fs.conf:/recovery/root/etc/mke2fs.conf \
     ${DEVICE_PATH}/recovery/root/etc/init/mtpd.rc:/recovery/root/etc/init/mtpd.rc \
@@ -57,13 +67,13 @@ PRODUCT_COPY_FILES += \
 
 
 # Files for recovery/lib
-PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES     += \
     $(DEVICE_PATH)/recovery/root/lib/libmtp.so:/recovery/root/lib/libmtp.so \
     $(DEVICE_PATH)/recovery/root/lib/libusbhost.so:/recovery/root/lib/libusbhost.so \
     $(DEVICE_PATH)/recovery/root/lib/modules/fpsgo.ko:/recovery/root/lib/modules/fpsgo.ko
 
 # Files for recovery/res
-PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES      += \
     $(DEVICE_PATH)/recovery/root/res/keys:/recovery/root/res/keys
 
 LOCAL_SHARED_LIBRARIES += \
@@ -82,16 +92,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
     ro.adb.secure=0 \
     ro.debuggable=1 \
-    sys.usb.vid=0x1bbb\
-    sys.usb.pid=0x0167\
     sys.usb.acm_cnt=0 \
     sys.usb.configfs=1 \
     sys.usb.ffs.ready=1 \
-    sys.usb.config=mtp,adb \
     security.perf_harden=0 \
     sys.usb.ffs.mtp.ready=1 \
-    sys.usb.controller=musb-hdrc \
-    persist.sys.usb.config=mtp,adb
+    sys.usb.controller=musb-hdrc
 
 # Packages
 PRODUCT_PACKAGES += \
@@ -102,9 +108,10 @@ PRODUCT_PACKAGES += \
     snap \
     torch \
     libmtp \
-    usb_mtp \
-    twrpmtp \
+    mtp_usb \
     configfs \
+    twrpmtp \
+    twrpmtp-ffs \
     libem_usb_jni \
     libtwrpmtp-ffs \
     com.android.future.usb.accessory

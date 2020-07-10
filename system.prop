@@ -6,7 +6,6 @@ security.perf_harden=0
 ro.adb.secure=0
 ro.allow.mock.location=1
 ro.debuggable=1
-sys.usb.config=mtp,adb
 sys.usb.acm_cnt=0
 sys.usb.ffs.mtp.ready=1
 # TCT SPECIFIC
@@ -17,7 +16,6 @@ ro.factorytest=0
 ro.bootimage.build.date=Wed Jan 22 10:07:35 CST 2020
 ro.bootimage.build.date.utc=1579658855
 ro.bootimage.build.fingerprint=TCL/5041C/U50A_ATT:8.1.0/OPM1.171019.011/v8MAH-0:user/release-keys
-persist.sys.usb.config=mtp,adb
 #
 # ADDITIONAL VENDOR DEFAULT PROPERTIES
 #
@@ -42,7 +40,6 @@ debug.atrace.tags.enableflags=0
 persist.service.acm.enable=0
 ro.mount.fs=EXT4
 ro.mtkrc.path=/vendor/etc/init/hw/
-persist.sys.usb.config=mtp,adb
 ro.oem_unlock_supported=1
 camera.disable_zsl_mode=1
 

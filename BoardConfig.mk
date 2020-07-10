@@ -1,4 +1,4 @@
-# ########################################################################
+# ************************************************************************
 #
 #                         BoardConfig.mk For Tetra
 #
@@ -16,33 +16,32 @@
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #  See http://www.gnu.org/licenses/gpl-2.0.html for more details
 #
-# ########################################################################
+# ************************************************************************
 
 DEVICE_PATH  := device/alcatel/U50A_ATT
 
 BOARD_VENDOR := TCL
 
 # ARCHITECTURE
-TARGET_ARCH         := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-
-TARGET_CPU_ABI      := armeabi-v7a
-TARGET_CPU_ABI2     := armeabi
-TARGET_CPU_VARIANT  := cortex-a9
+TARGET_ARCH                  := arm
+TARGET_ARCH_VARIANT          := armv7-a-neon
+TARGET_CPU_ABI               := armeabi-v7a
+TARGET_CPU_ABI2              := armeabi
+TARGET_CPU_VARIANT           := cortex-a9
 
 ## PLATFORM
-TARGET_BOARD_PLATFORM     ?= mt6739
-TARGET_BOARD_PLATFORM_GPU := PowerVR GE8100
+TARGET_BOARD_PLATFORM        ?= mt6739
+TARGET_BOARD_PLATFORM_GPU    := PowerVR GE8100
 
 ## BOOTLOADER
 TARGET_NO_BOOTLOADER         := true
 TARGET_BOOTLOADER_BOARD_NAME := U8M74040CT00
 
 ## AVB
-BOARD_AVB_ENABLE := false
+BOARD_AVB_ENABLE       := false
 
 ## NEON
-ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_NEON     := true
 
 ## INCLUDE EMBEDDED
 ANDROID_BUILD_EMBEDDED := true
@@ -59,7 +58,8 @@ BOARD_KERNEL_OFFSET      := 0x00008000
 BOARD_SECOND_OFFSET      := 0x00f00000
 BOARD_RAMDISK_OFFSET     := 0x05000000
 BOARD_KERNEL_TAGS_OFFSET := 0x04000000
-BOARD_KERNEL_CMDLINE     := 'bootopt=64S3,32S1,32S1 buildvariant=eng androidboot.selinux=permissive'
+BOARD_KERNEL_CMDLINE     := \
+    'bootopt=64S3,32S1,32S1 buildvariant=eng androidboot.selinux=permissive'
 
 ## MKBOOT ARGUEMENTS
 BOARD_MKBOOTIMG_ARGS := \
@@ -72,14 +72,14 @@ BOARD_MKBOOTIMG_ARGS := \
     --pagesize $(BOARD_KERNEL_PAGESIZE)
 
 ## PARTITION SIZES
-BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
-BOARD_CACHEIMAGE_PARTITION_SIZE    := 335544320
-BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 3397386240
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 3221225472
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 24641536
+BOARD_BOOTIMAGE_PARTITION_SIZE       := 16777216
+BOARD_CACHEIMAGE_PARTITION_SIZE      := 335544320
+BOARD_SYSTEMIMAGE_PARTITION_SIZE     := 3397386240
+BOARD_USERDATAIMAGE_PARTITION_SIZE   := 3221225472
+BOARD_RECOVERYIMAGE_PARTITION_SIZE   := 24641536
 
 ## PAGE SIZE * 64
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_FLASH_BLOCK_SIZE               := 131072
 
 ## FS-Types
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE    := ext4
@@ -118,7 +118,7 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 USE_OPENGL_RENDERER                   := true
 
 TARGET_SCREEN_WIDTH                   := 480
-TARGET_SCREEN_HEIGHT                  := 789
+TARGET_SCREEN_HEIGHT                  := 854
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 ## RECOVERY DETAILS
@@ -134,10 +134,8 @@ TARGET_USES_RECOVERY_AS_BOOT     := false
 RECOVERY_SDCARD_ON_DATA          := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
-TARGET_RECOVERY_FSTAB   := $(DEVICE_PATH)/recovery/root/etc/recovery.fstab
-TARGET_RECOVERY_INIT_RC := $(DEVICE_PATH)/recovery/root/init.recovery.mt6739.rc
-
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
+TARGET_RECOVERY_FSTAB            := $(DEVICE_PATH)/recovery/root/etc/recovery.fstab
+TARGET_RECOVERY_INIT_RC          := $(DEVICE_PATH)/recovery/root/init.recovery.mt6739.rc
 
 ## TEAM WIN RECOVERY PROJECT PROPERTIES
 TW_THEME                        := portrait_hdpi
@@ -148,7 +146,7 @@ TW_NEW_ION_HEAP                 := true
 TW_HAS_USB_STORAGE              := true
 TW_INPUT_BLACKLIST              := hbtp_vm
 TW_REBOOT_RECOVERY              := true
-TW_DEFAULT_LANGUAGE             := en-US
+TW_DEFAULT_LANGUAGE             := en
 TW_REBOOT_BOOTLOADER            := true
 TW_INCLUDE_FUSE_EXFAT           := true
 TW_FLASH_FROM_STORAGE           := true
@@ -160,6 +158,7 @@ TW_EXCLUDE_DEFAULT_USB_INIT     := true
 TW_HAS_NO_RECOVERY_PARTITION    := false
 TW_INTERNAL_STORAGE_MOUNT_POINT := /data
 TW_EXTERNAL_STORAGE_MOUNT_POINT := /external_sd
+TW_NO_SCREEN_TIMEOUT            := true
 
 TWHAVE_SELINUX        := true
 TWRP_INCLUDE_LOGCAT   := true
