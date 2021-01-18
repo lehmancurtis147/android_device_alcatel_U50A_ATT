@@ -5,8 +5,6 @@ ___
 ## __DEVICE RECOVERY TESTING CHECKLISTS__
 ---
 ___
-#
-___
 ##**Blocking checks**
 
 
