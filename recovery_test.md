@@ -5,7 +5,7 @@ ___
 ## __DEVICE RECOVERY TESTING CHECKLISTS__
 ---
 ___
-##**Blocking checks**
+## **Blocking checks**
 
 
 1. [x] Correct screen/recovery size
@@ -17,7 +17,7 @@ ___
 
 
 
-##**Medium checks**
+## **Medium checks**
   
 
 1. [x] update.zip sideload
@@ -31,7 +31,7 @@ ___
 - [x] Correct date
 
 
-##**Minor checks**
+## **Minor checks**
 
 
 1. [ ] MTP export
