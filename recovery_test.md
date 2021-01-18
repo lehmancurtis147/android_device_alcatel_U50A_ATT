@@ -36,7 +36,7 @@ ___
 ##**Minor checks**
 
 
-1. [N] MTP export
+1. [ ] MTP export
 - [x] reboot to bootloader
 - [x] reboot to recovery
 - [x] poweroff
@@ -44,7 +44,7 @@ ___
 - [x] temperature
 - [x] encrypted backups
 - [x] input devices via USB (USB-OTG) - keyboard, mouse and disks (not supported by the device)
-- [N] USB mass storage export
+- [ ] USB mass storage export
 - [x] set brightness
 - [x] vibrate
 - [x] screenshot
