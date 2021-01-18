@@ -1,16 +1,10 @@
 # **TWRP BRANCH**
 ---
 
----
-
 # ALCATEL TETRA _*(5041C)*_
 ## __TEAM WIN RECOVERY PROJECT  DEVICE TREE__
 
-
-
 *__Alcatel TETRA__* : is a low-end/budget phone on a MT6739 SoC and is a part of the TCL/Alcatel device family. The **TETRA** is codenamed **U50A_ATT**.
-#
----
 ![alt text](https://images.alcatelonetouch.us/products/phones/unlocked/tetra/tetra-gallery-2.jpg)
 
 ___
